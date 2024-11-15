@@ -101,7 +101,7 @@ deUna {return new Symbol(sym.DeUna, yychar,yyline,yytext());}
 ( "]" ) {return new Symbol(sym.Corchete_c, yychar, yyline, yytext());}
 
 /* Marcador de inicio de algoritmo */
-( "delicioso" ) {return new Symbol(sym.Delicioso, yychar, yyline, yytext());}
+( "relacion" ) {return new Symbol(sym.Relacion, yychar, yyline, yytext());}
 
 /* Punto y coma */
 ( ";" ) {return new Symbol(sym.P_coma, yychar, yyline, yytext());}

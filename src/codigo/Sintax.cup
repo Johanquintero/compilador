@@ -18,14 +18,14 @@ parser code
 terminal Linea, Comillas, T_dato, Int, Cadena, DeUna, MeDueleLaCabeza, Do, While, For,
     Igual, Suma, Resta, Multiplicacion, Division, Op_logico, Op_relacional,
     Op_atribucion, Op_incremento, Op_booleano, Parentesis_a, Parentesis_c,
-    Llave_a, Llave_c, Corchete_a, Corchete_c, Delicioso, P_coma, Identificador,
+    Llave_a, Llave_c, Corchete_a, Corchete_c, Relacion, P_coma, Identificador,
     Numero, ERROR;
 non terminal INICIO, SENTENCIA, DECLARACION, DECLARACION_FOR, IF, IF_ELSE,
     WHILE, DO_WHILE, FOR, SENTENCIA_BOOLEANA, SENTENCIA_FOR;
 
 start with INICIO;
 
-INICIO ::= Int Delicioso Parentesis_a Parentesis_c Llave_a SENTENCIA Llave_c | Delicioso Parentesis_a Parentesis_c Llave_a SENTENCIA Llave_c ;
+INICIO ::= Int Relacion Parentesis_a Parentesis_c Llave_a SENTENCIA Llave_c | Relacion Parentesis_a Parentesis_c Llave_a SENTENCIA Llave_c ;
 
 SENTENCIA ::= 
     SENTENCIA DECLARACION |

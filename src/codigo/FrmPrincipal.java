@@ -14,7 +14,7 @@ import static codigo.Tokens.Igual;
 import static codigo.Tokens.Linea;
 import static codigo.Tokens.Llave_a;
 import static codigo.Tokens.Llave_c;
-import static codigo.Tokens.Delicioso;
+import static codigo.Tokens.Relacion;
 import static codigo.Tokens.Multiplicacion;
 import static codigo.Tokens.Numero;
 import static codigo.Tokens.P_coma;
@@ -143,7 +143,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 case Corchete_c:
                     resultado += "  <Corchete de cierre>\t" + lexer.lexeme + "\n";
                     break;
-                case Delicioso:
+                case Relacion:
                     resultado += "  <Reservada main>\t" + lexer.lexeme + "\n";
                     break;
                 case P_coma:

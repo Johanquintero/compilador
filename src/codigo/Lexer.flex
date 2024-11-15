@@ -93,7 +93,7 @@ espacio=[ ,\t,\r]+
 ( "]" ) {lexeme = yytext(); return Corchete_c;}
 
 /* Marcador de inicio de algoritmo */
-( "delicioso" ) {lexeme=yytext(); return Delicioso;}
+( "relacion" ) {lexeme=yytext(); return Relacion;}
 
 /* Punto y coma */
 ( ";" ) {lexeme=yytext(); return P_coma;}

@@ -35,7 +35,7 @@ public enum Tokens {
     Llave_c,
     Corchete_a,
     Corchete_c,
-    Delicioso,
+    Relacion,
     P_coma,
     Identificador,
     Numero,
