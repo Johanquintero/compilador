@@ -1,31 +1,36 @@
 package codigo;
 
+// love code
+
 import java_cup.runtime.Symbol;
 
 parser code
 {:
     private Symbol s;
 
-    public void syntax_error(Symbol s){
+    public void syntax_error(Symbol s) {
         this.s = s;
     }
 
-    public Symbol getS(){
+    public Symbol getS() {
         return this.s;
     }
 :};
 
-terminal Linea, Comillas, T_dato, Int, Cadena, DeUna, MeDueleLaCabeza, Do, While, For,
-    Igual, Suma, Resta, Multiplicacion, Division, Op_logico, Op_relacional,
+terminal Linea, Comillas, T_dato, PeroTeEntiendo, SiempreContigo, TeDedicoMiTiempo, TePrometo, SiMeAmas, 
+    Compromiso, Juntos, Distancia, Fuerza, Dividimos, Division, Op_logico, Op_relacional,
     Op_atribucion, Op_incremento, Op_booleano, Parentesis_a, Parentesis_c,
     Llave_a, Llave_c, Corchete_a, Corchete_c, Relacion, P_coma, Identificador,
     Numero, ERROR;
 non terminal INICIO, SENTENCIA, DECLARACION, DECLARACION_FOR, IF, IF_ELSE,
-    WHILE, DO_WHILE, FOR, SENTENCIA_BOOLEANA, SENTENCIA_FOR;
+    SIEMPRE_CONTIGO, TE_PROMETO, TE_DEDICO_MI_TIEMPO, SENTENCIA_BOOLEANA, SENTENCIA_FOR;
 
 start with INICIO;
 
-INICIO ::= Int Relacion Parentesis_a Parentesis_c Llave_a SENTENCIA Llave_c | Relacion Parentesis_a Parentesis_c Llave_a SENTENCIA Llave_c ;
+INICIO ::= 
+    T_dato Relacion Parentesis_a Parentesis_c Llave_a SENTENCIA Llave_c | 
+    Relacion Parentesis_a Parentesis_c Llave_a SENTENCIA Llave_c
+;
 
 SENTENCIA ::= 
     SENTENCIA DECLARACION |
@@ -34,30 +39,26 @@ SENTENCIA ::=
     IF |
     SENTENCIA IF_ELSE |
     IF_ELSE |
-    SENTENCIA WHILE |
-    WHILE |
-    SENTENCIA DO_WHILE
-    DO_WHILE |
-    SENTENCIA FOR |
-    FOR
+    SENTENCIA SIEMPRE_CONTIGO |
+    SIEMPRE_CONTIGO |
+    SENTENCIA TE_PROMETO |
+    TE_PROMETO |
+    SENTENCIA TE_DEDICO_MI_TIEMPO |
+    TE_DEDICO_MI_TIEMPO
 ;
 DECLARACION ::= 
-    Int Identificador P_coma | 
-    Int Identificador Op_atribucion Numero P_coma |
-    Int Identificador Igual Numero P_coma |
-    Int Identificador Op_incremento P_coma | 
-    Int Op_incremento Identificador P_coma | 
     T_dato Identificador P_coma | 
     T_dato Identificador Op_atribucion Numero P_coma |
-    T_dato Identificador Igual Numero P_coma |
+    T_dato Identificador Compromiso Numero P_coma |
     T_dato Identificador Op_incremento P_coma | 
     T_dato Op_incremento Identificador P_coma | 
-    Cadena Identificador Op_atribucion Comillas Comillas P_coma |
-    Cadena Identificador Igual Comillas Comillas P_coma |
-    Cadena Identificador Op_atribucion Comillas Identificador Comillas P_coma |
-    Cadena Identificador Igual Comillas Identificador Comillas P_coma
+    Comillas Identificador Op_atribucion Comillas Comillas P_coma |
+    Comillas Identificador Compromiso Comillas Comillas P_coma |
+    Comillas Identificador Op_atribucion Comillas Identificador Comillas P_coma |
+    Comillas Identificador Compromiso Comillas Identificador Comillas P_coma
 ;
-IF ::= DeUna Parentesis_a SENTENCIA_BOOLEANA Parentesis_c Llave_a SENTENCIA Llave_c
+IF ::= 
+    SiMeAmas Parentesis_a SENTENCIA_BOOLEANA Parentesis_c Llave_a SENTENCIA Llave_c
 ;
 SENTENCIA_BOOLEANA ::= 
     Op_booleano | 
@@ -67,17 +68,21 @@ SENTENCIA_BOOLEANA ::=
     Identificador Op_relacional Comillas Comillas |
     Identificador Op_relacional Comillas Identificador Comillas
 ;
-IF_ELSE ::= DeUna Parentesis_a SENTENCIA_BOOLEANA Parentesis_c Llave_a SENTENCIA Llave_c MeDueleLaCabeza Llave_a SENTENCIA Llave_c
+IF_ELSE ::= 
+    SiMeAmas Parentesis_a SENTENCIA_BOOLEANA Parentesis_c Llave_a SENTENCIA Llave_c PeroTeEntiendo Llave_a SENTENCIA Llave_c
 ;
-WHILE ::= While Parentesis_a SENTENCIA_BOOLEANA Parentesis_c Llave_a SENTENCIA Llave_c
+SIEMPRE_CONTIGO ::= 
+    SiempreContigo Parentesis_a SENTENCIA_BOOLEANA Parentesis_c Llave_a SENTENCIA Llave_c
 ;
-DO_WHILE ::= Do Llave_a SENTENCIA Llave_c While Parentesis_a SENTENCIA_BOOLEANA Parentesis_c P_coma
+TE_PROMETO ::= 
+    TePrometo Llave_a SENTENCIA Llave_c SiempreContigo Parentesis_a SENTENCIA_BOOLEANA Parentesis_c P_coma
 ;
-FOR ::= For Parentesis_a SENTENCIA_FOR Parentesis_c Llave_a SENTENCIA Llave_c
+TE_DEDICO_MI_TIEMPO ::= 
+    TeDedicoMiTiempo Parentesis_a SENTENCIA_FOR Parentesis_c Llave_a SENTENCIA Llave_c
 ;
-SENTENCIA_FOR ::=
-    T_dato Identificador Igual Numero P_coma SENTENCIA_BOOLEANA P_coma DECLARACION_FOR |
-    Identificador Igual Numero P_coma SENTENCIA_BOOLEANA P_coma DECLARACION_FOR
+SENTENCIA_FOR ::= 
+    T_dato Identificador Compromiso Numero P_coma SENTENCIA_BOOLEANA P_coma DECLARACION_FOR |
+    Identificador Compromiso Numero P_coma SENTENCIA_BOOLEANA P_coma DECLARACION_FOR
 ;
 DECLARACION_FOR ::= 
     Identificador Op_atribucion Numero |

@@ -24,40 +24,40 @@ espacio=[ ,\t,\r]+
 ( "\"" ) {lexeme=yytext(); return Comillas;}
 
 /* Tipos de datos */
-( byte | int | char | long | float | double ) {lexeme=yytext(); return T_dato;}
-
-/* Tipo de dato String */
-( String ) {lexeme=yytext(); return Cadena;}
-
-/* Palabra reservada If */
-( deUna ) {lexeme=yytext(); return DeUna;}
+( citaPerfecta | confesion | fecha | hora ) {lexeme=yytext(); return T_dato;}
 
 /* Palabra reservada Else */
-( meDueleLaCabeza ) {lexeme=yytext(); return MeDueleLaCabeza;}
-
-/* Palabra reservada Do */
-( do ) {lexeme=yytext(); return Do;}
+( peroTeEntiendo ) {lexeme=yytext(); return PeroTeEntiendo;}
 
 /* Palabra reservada While */
-( while ) {lexeme=yytext(); return While;}
+( siempreContigo ) {lexeme=yytext(); return SiempreContigo;}
 
 /* Palabra reservada For */
-( for ) {lexeme=yytext(); return For;}
+( teDedicoMiTiempo ) {lexeme=yytext(); return TeDedicoMiTiempo;}
+
+/* Palabra reservada Do */
+( tePrometo ) {lexeme=yytext(); return TePrometo;}
+
+/* Palabra reservada If */
+( siMeAmas ) {lexeme=yytext(); return SiMeAmas;}
 
 /* Operador Igual */
-( "=" ) {lexeme=yytext(); return Igual;}
+( compromiso ) {lexeme=yytext(); return Compromiso;}
 
 /* Operador Suma */
-( "+" ) {lexeme=yytext(); return Suma;}
+( juntos ) {lexeme=yytext(); return Juntos;}
 
 /* Operador Resta */
-( "-" ) {lexeme=yytext(); return Resta;}
+( distancia ) {lexeme=yytext(); return Distancia;}
 
 /* Operador Multiplicacion */
-( "*" ) {lexeme=yytext(); return Multiplicacion;}
+( fuerza ) {lexeme=yytext(); return Fuerza;}
 
 /* Operador Division */
-( "/" ) {lexeme=yytext(); return Division;}
+( dividimos ) {lexeme=yytext(); return Dividimos;}
+
+/* Operadores Booleanos */
+( sinceridad | engaño ) {lexeme=yytext(); return Op_booleano;}
 
 /* Operadores logicos */
 ( "&&" | "||" | "!" | "&" | "|" ) {lexeme=yytext(); return Op_logico;}
@@ -70,9 +70,6 @@ espacio=[ ,\t,\r]+
 
 /* Operadores Incremento y decremento */
 ( "++" | "--" ) {lexeme = yytext(); return Op_incremento;}
-
-/*Operadores Booleanos*/
-(true | false)      {lexeme = yytext(); return Op_booleano;}
 
 /* Parentesis de apertura */
 ( "(" ) {lexeme=yytext(); return Parentesis_a;}
